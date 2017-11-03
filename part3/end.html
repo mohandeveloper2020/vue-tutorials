@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue js toutorials part 1</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="../css/style.css">
+
+</head>
+
+<body>
+
+    <div class="container">
+        <div id="app">
+
+            <pre>v-text example:</pre>
+            <h2 class="card-title" v-text="message">
+                {# {{ message }} #}
+            </h2>
+            <hr />
+            <pre>v-html example:</pre>
+            <h2 class="card-title" v-html="intro">
+                {# {{ message }} #}
+            </h2>
+            <hr />
+            <pre>v-show example:</pre>
+            <h2 class="card-title" v-show="viewed  == viewed2">
+                v-show viewed
+            </h2>
+
+            <hr />
+            <pre>v-show example:</pre>
+            <h2 v-if="viewed">You have viewed this page</h2>
+            <h2 v-if="viewed == viewed2">Viewed == viewed2</h2>
+
+            <hr />
+            <pre>v-if example:</pre>
+            <h2 v-if="viewed">You have viewed this page</h2>
+            <h2 v-else>You are NOT view this page </h2>
+
+            <hr />
+            <pre>v-pre example:</pre>
+            <h2 v-pre>{{message}}</h2>
+
+
+            <hr />
+            <pre>v-once example:</pre>
+            <h2 v-once>{{message}}</h2>
+
+            <hr />
+            <pre>v-cloak example:</pre>
+            <h2 v-cloak>{{message}}</h2>
+
+
+
+        </div>
+        <!-- //#app end  -->
+        <div id="loops">
+
+
+        </div>
+        <!-- //#loops end -->
+
+    </div>
+    <!-- //.container end -->
+
+</body>
+<script src="https://unpkg.com/vue@2.5.2/dist/vue.js"></script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            message: 'Hello Vue World',
+            intro: 'Welcome to the Vue JS Tutorials <small>Its all about Vue.js</small>',
+            viewed: false,
+            viewed2: true,
+        }
+    });
+</script>
+
+</html>
