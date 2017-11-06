@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue js toutorials part 5</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="../css/style.css">
+
+</head>
+
+<body>
+
+    <div id="app">
+        <div class="container">
+
+
+
+            <div class="card text-center">
+                <!-- <div class="card-header">
+                Featured
+            </div> -->
+                <div class="card-body">
+                    <h2 class="card-title">
+                        {{ title }}
+                    </h2>
+                    <p class="card-text"> {{ content }}</p>
+                </div>
+                <!-- <div class="card-footer text-muted">
+                2 days ago
+            </div> -->
+
+            </div>
+        </div>
+    </div>
+    <!-- //#app end  -->
+</body>
+<script src="https://unpkg.com/vue@2.5.2/dist/vue.js"></script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            title: 'Welcome to the vue js totorial',
+            content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus suscipit porttitor ex, vitae tempus arcu blandit a. Nulla tempus sem consequat, ornare ante sed, aliquet diam. Donec sollicitudin scelerisque quam at iaculis. Proin quis aliquam ex. Ut sit amet ipsum quis diam egestas viverra. Phasellus interdum vestibulum metus, eget porta velit iaculis ac. Quisque mattis mi at erat accumsan accumsan. Phasellus at posuere eros, eu sodales tellus. Maecenas tincidunt odio risus, ac maximus est accumsan vel.'
+        }
+    });
+</script>
+
+</html>

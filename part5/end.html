@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue js toutorials part 5</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="../css/style.css">
+
+</head>
+
+<body>
+
+    <div class="container">
+        <div id="app">
+
+            <h2 class="card-title" v-bind:title="title">
+                {{ message }}
+            </h2>
+            <pre>v-for example:</pre>
+            <ul class="list-unstyled">
+                <li v-for="todo in todos">{{todo.text}}</li>
+            </ul>
+            <hr />
+            <pre>v-for count message example:</pre>
+            <ul class="list-unstyled">
+                <li v-for="count in counts"> <strong>{{count}}.</strong> {{message}}</li>
+            </ul>
+            <hr />
+            <pre>v-for count example:</pre>
+            <ul class="list-unstyled">
+                <li v-for="count in count">{{count}}</li>
+            </ul>
+            <hr />
+
+        </div>
+        <!-- //#app end  -->
+
+    </div>
+    <!-- //.container end -->
+
+</body>
+<script src="https://unpkg.com/vue@2.5.2/dist/vue.js"></script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            message: 'Hello Vue JS',
+            todos: [{
+                text: 'Learn Vue Fundamentals '
+            }, {
+                text: 'Leand Advance Vue Js '
+            }, {
+                text: 'Apply for job '
+            }],
+            count: 10,
+            counts: 5
+        }
+    });
+</script>
+
+</html>
