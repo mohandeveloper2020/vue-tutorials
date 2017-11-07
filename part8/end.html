@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue js toutorials Computed Values :part 8 </title>
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="../css/style.css">
+
+</head>
+
+<body>
+
+    <div class="container">
+        <div id="app">
+            <pre>Final Computed Value:</pre>
+            <h2 class="card-title text-center">
+                Welcome Mr.{{ fullname }}
+            </h2>
+            <p> <strong>First Name :</strong> {{first}} </p>
+            <p> <strong>Last Name :</strong> {{last}} </p>
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+
+                        <label for="firstName">First Name</label>
+                        <input v-model="first" class="form-control" type="text" placeholder="Enter First Name">
+
+                    </div>
+                </div>
+                <!--//.col-sm-6 end -->
+                <div class="col-sm-6">
+
+                    <div class="form-group">
+
+                        <label for="lastName">Last Name</label>
+                        <input v-model="last" class="form-control" type="text" placeholder="Enter First Name">
+
+                    </div>
+
+                </div>
+                <!--//.col-sm-6 end -->
+            </div>
+            <!-- //.row end  -->
+
+            <hr />
+
+            <pre>Final Computed Value with click event:</pre>
+            <h1 class="card-title text-center">
+                You are a <span class="text-success"> 
+                    {{ level }} </span>
+            </h1>
+            <h3 class="text-center">Current xp: <span class="text-success">{{xp}}</span></h3>
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+
+                        <button class="btn btn-success" v-on:click="addXp">Add Exprience</button>
+
+                    </div>
+                </div>
+                <!--//.col-sm-6 end -->
+                <div class="col-sm-6">
+
+                    <div class="form-group">
+
+                        <button class="btn btn-primary" v-on:click="removeXp">Remove Exprience</button>
+
+                    </div>
+
+                </div>
+            </div>
+            <!-- //.col-sm-6 end -->
+            <!-- //.row end  -->
+        </div>
+        <!-- //#app end  -->
+
+    </div>
+    <!-- //.container end -->
+
+</body>
+<script src="https://unpkg.com/vue@2.5.2/dist/vue.js"></script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            first: 'Raghavendra S ',
+            last: 'Diddimani',
+            xp: 10
+        },
+        methods: {
+            addXp: function(str) {
+                return this.xp += 10
+            },
+            removeXp: function() {
+                return this.xp -= 10
+            }
+        },
+        computed: {
+            fullname: function() {
+                return this.first + " " + this.last
+            },
+            level: function() {
+                if (this.xp >= 200) {
+                    return 'Professional'
+                } else if (this.xp >= 100) {
+                    return 'Itermediate'
+                } else if (this.xp >= 0) {
+
+                    return "Beginner"
+                } else {
+                    return 'Not Eligible'
+                }
+            }
+        }
+    });
+</script>
+
+</html>

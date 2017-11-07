@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue js toutorials - Gutter & Stter Computed Properties :part 9 </title>
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="../css/style.css">
+
+</head>
+
+<body>
+
+    <div class="container">
+        <div id="app">
+            <pre>Gutter & Stter Computed Properties Example </pre>
+            <h2 class="card-title text-center">
+                {{ fullname }}
+            </h2>
+            <p> <strong>First Name :</strong> {{first}} </p>
+            <p> <strong>Last Name :</strong> {{last}} </p>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+
+                        <label for="fullname">Full Name</label>
+                        <input v-model="fullname" class="form-control" type="text" placeholder="Enter First Name">
+
+                    </div>
+                </div>
+                <!--//.col-sm-12 end -->
+
+            </div>
+            <!-- //.row end  -->
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+
+                        <label for="firstName">First Name</label>
+                        <input v-model="first" class="form-control" type="text" placeholder="Enter First Name">
+
+                    </div>
+                </div>
+                <!--//.col-sm-6 end -->
+                <div class="col-sm-6">
+
+                    <div class="form-group">
+
+                        <label for="lastName">Last Name</label>
+                        <input v-model="last" class="form-control" type="text" placeholder="Enter First Name">
+
+                    </div>
+
+                </div>
+                <!--//.col-sm-6 end -->
+            </div>
+            <!-- //.row end  -->
+
+        </div>
+        <!-- //#app end  -->
+
+    </div>
+    <!-- //.container end -->
+
+</body>
+<script src="https://unpkg.com/vue@2.5.2/dist/vue.js"></script>
+<script>
+var app = new Vue({
+    el: '#app',
+    data: {
+        first: 'Raghavendra S ',
+        last: 'Diddimani'
+    },
+    computed: {
+        fullname: {
+            // getter function 
+            get: function() {
+                return this.first + " " + this.last
+            },
+            // setter function 
+            set: function(value) {
+                var name = value.split(' ')
+                this.first = name[0]
+                this.last = name[name.length - 1]
+            }
+        }
+    }
+});
+</script>
+
+</html>
