@@ -41,8 +41,9 @@
             <input type="text" v-model="url">
             <button v-on:click="humanizeUrl" class="btn btn-primary"> Clean The URL</button>
 
-
             <hr />
+
+
 
         </div>
         <!-- //#app end  -->
@@ -79,7 +80,6 @@
             },
             humanizeUrl: function() {
                 this.cleanUrl = this.url.replace(/^https?:\/\//, '').replace(/\/$/, '')
-
             }
         }
     });
