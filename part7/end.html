@@ -20,6 +20,22 @@
         <div id="app">
             <pre>Event Handling Example:</pre>
             <h2 class="card-title">
+                Count: {{ newcount }}
+            </h2>
+            <button v-on:click="add(1)" class="btn btn-primary"> Count Up 1</button>
+            <button v-on:click="subtract(1)" class="btn btn-secondary"> Count Down 1</button>
+
+            <hr />
+            <button v-on:click="add(10)" class="btn btn-primary"> Count Up 10</button>
+            <button v-on:click="subtract(10)" class="btn btn-secondary"> Count Down 10</button>
+
+
+            <hr />
+
+
+
+            <pre>Event Handling Example:</pre>
+            <h2 class="card-title">
                 Count: {{ count }}
             </h2>
             <button v-on:click="countUp" class="btn btn-primary"> Count Up</button>
@@ -59,6 +75,7 @@
         data: {
             message: 'Hello Vue World',
             count: 0,
+            newcount: 0,
             PrintVal: '',
             url: '',
             print: '',
@@ -66,9 +83,12 @@
             cleanUrl: ''
         },
         methods: {
-            /*counter: function(val) {
-                this.val
-            }, */
+            add: function(inc) {
+                this.newcount += inc
+            },
+            subtract: function(dec) {
+                this.newcount -= dec
+            },
             countUp: function() {
                 this.count += 1
             },
