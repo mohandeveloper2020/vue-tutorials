@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue js toutorials -AJAX to External API :part 10 </title>
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="../css/style.css">
+
+</head>
+
+<body>
+
+    <div class="container">
+        <div id="app">
+            <pre>AJAX to External API Example </pre>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+
+                        <label for="startingzip">Starting City Zipcode</label>
+                        <input v-model="startingzip" class="form-control" type="text" placeholder="Starting City Zipcode">
+                        <!-- <span class="inline-block">{{startingcity}}</span>-->
+                        <ul class="list-unstyled">
+                            <li v-for="scity in startingcity"> {{scity.Name}}, {{scity.State}}, {{scity.Taluk}}, {{scity.Country}} </li>
+                        </ul>
+                    </div>
+                </div>
+                <!--//.col-sm-6 end -->
+                <div class="col-sm-6">
+
+                    <div class="form-group">
+
+                        <label for="endingcity">Ending City Zipcode</label>
+                        <input v-model="endingzip" class="form-control" type="text" placeholder="Ending City Zipcode">
+                        <!-- <span class="inline-block">{{endingcity}}</span> -->
+                        <ul class="list-unstyled">
+
+                            <li v-for="ecity in endingcity"> {{ecity.Name}}, {{ecity.State}}, {{ecity.Taluk}}, {{ecity.Country}} </li>
+                        </ul>
+
+                    </div>
+
+                </div>
+                <!--//.col-sm-6 end -->
+            </div>
+            <!-- //.row end  -->
+
+        </div>
+        <!-- //#app end  -->
+
+    </div>
+    <!-- //.container end -->
+
+</body>
+<script src="https://unpkg.com/vue@2.5.2/dist/vue.js"></script>
+<script src="https://unpkg.com/axios@0.12.0/dist/axios.min.js"></script>
+<script src="https://unpkg.com/lodash@4.13.1/lodash.min.js"></script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            startingzip: '',
+            startingcity: '',
+            endingzip: '',
+            endingcity: ''
+        },
+        watch: {
+            startingzip: function() {
+                this.startingcity = ''
+                if (this.startingzip.length == 6) {
+                    this.lookupStartingZip()
+                }
+            },
+            endingzip: function() {
+                this.endingcity = ''
+                if (this.endingzip.length == 6) {
+                    this.lookupEndingZip()
+                }
+            }
+        },
+        methods: {
+            lookupStartingZip: _.debounce(
+                function() {
+                    var app = this
+                    app.startingcity = 'Searching...'
+                    axios.get('http://postalpincode.in/api/pincode/' + app.startingzip)
+                        .then(function(response) {
+                            var data = response.data.PostOffice
+                                //console.log(response.data.PostOffice)
+                            app.startingcity = data
+                                //for (var i in data) {
+                                //   console.log(data[i]);
+                                //app.startingcity = data[i].Name + ', ' + data[i].Taluk + ', ' + data[i].State + ', ' + data[i].Country
+                                //    app.startingcity = data
+                                //  }
+                        })
+                }, 500),
+            lookupEndingZip: _.debounce(
+                function() {
+                    this.endingcity = 'Searching...'
+                    axios.get('http://postalpincode.in/api/pincode/' + app.endingzip)
+                        .then(function(response) {
+                            var data = response.data.PostOffice
+                                //console.log(response.data.PostOffice)
+                            console.log(response)
+                            app.endingcity = data
+                                //for (var i in data) {
+                                //    console.log(data[i]);
+                                //app.endingcity = data[i].Name + ', ' + data[i].Taluk + ', ' + data[i].State + ', ' + data[i].Country
+                                ///      app.endingcity = data
+                                //  }
+                        })
+                }, 500),
+
+        }
+
+    });
+</script>
+
+</html>
